@@ -14,7 +14,7 @@ First, you should install [MongoDB](https://docs.mongodb.com/manual/installation
 then install all dependencies by running the following command:
 
 ```bash
- sudo pip install -r requirements.txt
+$ sudo pip install -r requirements.txt
 ```
 It will install Flask and PyMongo.
 ## Usage
