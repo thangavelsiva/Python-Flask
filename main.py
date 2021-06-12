@@ -63,12 +63,13 @@ def backup():
         
         read_obj = crud_api.CrudAPI(data)
         mongo_data = read_obj.read()
-        with open('./backup_mongodb/backup_mongodb.json','w') as f:
+        backup_file_path ='./backup_mongodb/backup_mongodb.json'
+        with open(backup_file_path,'w') as f:
             for details in mongo_data:
      
                 result.update({details['user_id']: { key:value for key,value in details.items() if key !='user_id' } })  # formating the mongodb data
             json.dump(result,f)
-        return Response(response=json.dumps({"status":"succssfully backed up into file"}), status=200,
+        return Response(response=json.dumps({"status":"successfully backed up into file","filepath":backup_file_path}), status=200,
                         mimetype='application/json')
     except:
         return Response(response=json.dumps({"status":"Error in file backup. Please check database connection"}), status=400,
